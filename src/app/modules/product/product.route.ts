@@ -8,12 +8,12 @@ import { USER_ROLE } from "../user/user.constant";
 const router = express.Router();
 
 router.get("/",
-auth(USER_ROLE.Manager,USER_ROLE.Seller),
+// auth(USER_ROLE.Manager,USER_ROLE.Seller),
 
 ProductControllers.getAllProducts);
 
 router.get("/filter-options",
-auth(USER_ROLE.Manager,USER_ROLE.Seller),
+// auth(USER_ROLE.Manager,USER_ROLE.Seller),
 
 
 ProductControllers.getAllFilterOptions);
@@ -28,7 +28,7 @@ router.post(
 );
 
 router.get("/:slug",
-auth(USER_ROLE.Manager,USER_ROLE.Seller),
+// auth(USER_ROLE.Manager,USER_ROLE.Seller),
 
 
 ProductControllers.getSingleProduct);
