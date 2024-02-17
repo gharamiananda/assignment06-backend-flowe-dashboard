@@ -55,6 +55,9 @@ const auth = (...requiredRoles: TUserRole[]) => {
     //   throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized !');
     // }
 
+
+    console.log('requiredRoles', requiredRoles)
+
     if (requiredRoles && !requiredRoles.includes(role)) {
       throw new AppError(
         httpStatus.UNAUTHORIZED,

@@ -37,4 +37,4 @@ router.delete(
   CouponControllers.deleteCoupons
 );
 
-export const ProductRoutes = router;
+export const CouponRoutes = router;
