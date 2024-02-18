@@ -46,6 +46,12 @@ const salesSchema = new Schema<TSales>({
       type: Number,
       default: 0
 
+    },
+    productPrice:{
+      type: Number,
+      required: true,
+
+
     }
   
 },{
