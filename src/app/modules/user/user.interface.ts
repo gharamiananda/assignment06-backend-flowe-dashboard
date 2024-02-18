@@ -10,7 +10,8 @@ passwordChangeAt?: Date;
   password: string;
   needPasswordChange: boolean;
   isDeleted: boolean;
-  status:'active' | 'blocked'
+  status:'active' | 'blocked';
+  rewardPoints:number;
 };
 
 

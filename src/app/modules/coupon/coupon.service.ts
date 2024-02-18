@@ -5,7 +5,7 @@ import { TCoupon } from "./coupon.interface";
 import { Coupon } from "./coupon.model";
 
 const createCouponIntoDB = async (userData:JwtPayload,payload: TCoupon) => {
-const slugName=payload.name.split(' ').join('-');
+const slugName=payload.name.toLowerCase().split(' ').join('-');
 
   const result = await Coupon.create({...payload,createdBy:userData._id,slug:slugName});
 
@@ -18,8 +18,7 @@ const getAllCouponFromDB = async (query: Record<string, unknown>) => {
 
   
   const productQuery = new QueryBuilder(
-    Coupon.find({isDeleted:false})
-      .populate('createdBy'),
+    Coupon.find({isDeleted:false}),
     query,
   )
     .search(['name'])

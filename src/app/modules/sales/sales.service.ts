@@ -7,6 +7,7 @@ import AppError from "../../errors/AppError";
 import httpStatus from "http-status";
 import mongoose from "mongoose";
 import QueryBuilder from "../../builder/QueryBuilder";
+import { User } from "../user/user.model";
 
 const createSalesIntoDB = async (userData:JwtPayload,payload: TSales) => {
 
@@ -34,6 +35,24 @@ const createSalesIntoDB = async (userData:JwtPayload,payload: TSales) => {
     if (!updatedProductInfo) {
       throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update Product');
     }
+
+    const rewardPrice=payload.rewardsPrice > 0 ?  payload.rewardsPrice  : 0
+
+
+    const updatedUserInfo = await User.findOneAndUpdate(
+      {_id: userData?._id},
+      { $inc: { rewardPoints:  payload.totalPrice - rewardPrice } },
+      {
+        new: true,
+        runValidators: true,
+        session,
+      },
+      );
+      
+    if (!updatedUserInfo) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update User');
+    }
+    
 
 // console.log('updatedProductInfo', updatedProductInfo)
 

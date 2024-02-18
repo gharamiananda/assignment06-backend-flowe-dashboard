@@ -6,6 +6,10 @@ soldQuantity : number
 soldDate:  Date,
 product:Types.ObjectId;
 totalPrice:number;
-salesMan : Types.ObjectId
+salesMan : Types.ObjectId;
+couponPrice:number;
+couponName:string;
+rewardsPrice:number;
+productPrice: number
 
 };

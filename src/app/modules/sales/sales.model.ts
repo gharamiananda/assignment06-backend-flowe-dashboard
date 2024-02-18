@@ -31,6 +31,21 @@ const salesSchema = new Schema<TSales>({
     totalPrice:{
       type: Number,
       required: true,
+    },
+    couponPrice:{
+      type: Number,
+      default: 0
+
+    },
+    couponName:{
+      type: String,
+      default: ''
+
+    },
+    rewardsPrice:{
+      type: Number,
+      default: 0
+
     }
   
 },{

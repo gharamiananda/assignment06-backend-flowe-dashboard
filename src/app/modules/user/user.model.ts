@@ -45,8 +45,13 @@ unique: true,
   status:{
     type: String,
     enum:UserStatus
-  }
+  },
   
+  rewardPoints:{
+    type:Number,
+    default: 0
+
+  }
 
  
 },{
