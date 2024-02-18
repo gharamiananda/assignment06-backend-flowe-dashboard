@@ -8,12 +8,13 @@ import { USER_ROLE } from "../user/user.constant";
 const router = express.Router();
 
 router.get("/", 
-auth(),
+  auth(USER_ROLE.Seller, USER_ROLE.Manager),
+
 
 SalesControllers.getAllSales);
 router.post(
   "/",
-  auth(USER_ROLE.Seller),
+  auth(USER_ROLE.Seller, USER_ROLE.Manager),
 
 
   validateRequest(SalesValidations.createSalesValidationSchema),
@@ -21,13 +22,15 @@ router.post(
 );
 
 router.get("/:SalesId",
-auth(),
+  auth(USER_ROLE.Seller, USER_ROLE.Manager),
+
 
 SalesControllers.getSingleSales);
 
 router.patch(
   "/:SalesId",
-  auth(),
+    auth(USER_ROLE.Seller, USER_ROLE.Manager),
+
 
   //   validateRequest(AcademicSemesterValidations.),
   SalesControllers.updateSales
