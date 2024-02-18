@@ -16,7 +16,6 @@ const createSalesIntoDB = async (userData:JwtPayload,payload: TSales) => {
     throw new AppError(httpStatus.NOT_FOUND,'Product Not Found','data statusCode')
   
   }
-  console.log('findProduct', findProduct)
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
@@ -80,12 +79,12 @@ const createSalesIntoDB = async (userData:JwtPayload,payload: TSales) => {
 
 };
 
-const getAllSalesFromDB = async (query: Record<string, unknown>) => {
+const getAllSalesFromDB = async (query: Record<string, unknown>,userData:JwtPayload) => {
 
 
 
   const salesQuery = new QueryBuilder(
-    Sales.find()
+    Sales.find({salesMan:userData?._id})
       .populate('product'),
     query,
   )

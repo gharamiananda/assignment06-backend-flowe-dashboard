@@ -56,7 +56,6 @@ const auth = (...requiredRoles: TUserRole[]) => {
     // }
 
 
-    console.log('requiredRoles', requiredRoles)
 
     if (requiredRoles && !requiredRoles.includes(role)) {
       throw new AppError(

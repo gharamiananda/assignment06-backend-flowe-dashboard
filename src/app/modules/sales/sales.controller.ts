@@ -15,7 +15,7 @@ const createSales = catchAsync(async (req, res) => {
 });
 
 const getAllSales = catchAsync(async (req, res) => {
-  const Sales = await SalesServices.getAllSalesFromDB(req.query);
+  const Sales = await SalesServices.getAllSalesFromDB(req.query,req.user);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
