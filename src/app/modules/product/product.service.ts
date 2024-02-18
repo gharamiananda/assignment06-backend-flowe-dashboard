@@ -2,9 +2,21 @@ import { JwtPayload } from "jsonwebtoken";
 import { TProduct } from "./product.interface";
 import { Product } from "./product.model";
 import QueryBuilder from "../../builder/QueryBuilder";
+import { sendImageToCloudinary } from "../../utils/sendImageToCloudinary";
 
-const createProductIntoDB = async (userData:JwtPayload,payload: TProduct) => {
+const createProductIntoDB = async (userData:JwtPayload,payload: TProduct,file:any) => {
 const slugName=payload.name.split(' ').join('-');
+
+
+
+if (file) {
+  const imageName = `${userData?._id}${payload?.name}`;
+  const path = file?.path;
+
+  //send image to cloudinary
+  const { secure_url } = await sendImageToCloudinary(imageName, path);
+  payload.images = [secure_url as string]
+}
 
   const result = await Product.create({...payload,createdBy:userData._id,slug:slugName});
 

@@ -13,5 +13,7 @@ export default {
   jwt_access_expires_in: process.env.JWT_ACCESS_EXPIRES_IN,
   seed_manager_password: process.env.SEED_MANAGER_PASSWORD,
 
-  
+  cloudinary_cloud_name: process.env.CLOUD_NAME,
+  cloudinary_api_key: process.env.API_KEY,
+  cloudinary_api_secret: process.env.API_SECRET,
 };
