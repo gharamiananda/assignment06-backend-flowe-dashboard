@@ -18,4 +18,6 @@ AuthControllers.register
 )
 
 
+
+
 export const AuthRoutes = router;
