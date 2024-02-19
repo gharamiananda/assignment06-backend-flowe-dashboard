@@ -20,9 +20,23 @@ const getMe = catchAsync(async (req, res) => {
   });
 
 
+const getDashbaordInfo = catchAsync(async (req, res) => {
+  const { _id, role } = req.user;
+  const result = await UserServices.getMyDashboard(_id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User is retrieved successfully',
+    data: result,
+  });
+});
 
 
+
+  
 
 export const UserControllers = {
     getMe,
+    getDashbaordInfo
 };

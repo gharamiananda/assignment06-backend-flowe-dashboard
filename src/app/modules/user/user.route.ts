@@ -18,4 +18,13 @@ router.get(
 
 
 
+router.get(
+  '/my-dashboard',
+  auth(USER_ROLE.Manager,USER_ROLE.Seller),
+
+  UserControllers.getDashbaordInfo,
+);
+
+
+
 export const UserRoutes = router;
