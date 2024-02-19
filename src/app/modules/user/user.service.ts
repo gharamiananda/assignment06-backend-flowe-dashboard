@@ -27,7 +27,7 @@ const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
 const totalMonthSales=await Sales.countDocuments({  salesMan:userId ,soldDate:{ $gte: firstDayOfMonth, $lte: lastDayOfMonth }});
 
-const totalWeeklySales=await Sales.countDocuments({  salesMan:userId ,soldDate:{ $gte:  today.setDate(today.getDate() - 7)  }});
+const totalSales=await Sales.countDocuments({  salesMan:userId });
 
 const totalIncomes=await Sales.aggregate(   [
   {
@@ -42,7 +42,7 @@ const totalIncomes=await Sales.aggregate(   [
   return {
     totalProducts,
     totalMonthSales,
-    totalWeeklySales,
+    totalSales,
 
 totalIncomes
   };
