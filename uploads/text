@@ -1,0 +1,13 @@
+
+NODE_ENV=development
+PORT=5800
+DATABASE_URL=mongodb+srv://ananda:5zDEUn8Jl0ogiICz@cluster0.jvtuqtb.mongodb.net/L2-B2-assignment006
+BCRYPT_SALT_ROUNDS=10
+JWT_ACCESS_SECRET=accesstokensecret
+JWT_ACCESS_EXPIRES_IN=1d
+SEED_MANAGER_PASSWORD=Anand@8420
+
+
+CLOUD_NAME=dri1mh3xh
+API_KEY=782966958458536
+API_SECRET=xJvXtFtVZGe1c2RVHqIuBM4Tghc
