@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import httpStatus from 'http-status';
-import mongoose from 'mongoose';
 import { User } from './user.model';
 import { Product } from '../product/product.model';
 import { Sales } from '../sales/sales.model';
