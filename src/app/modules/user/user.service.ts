@@ -16,7 +16,7 @@ const getMe = async (userId: string, role: string) => {
 
 
 
-const getMyDashboard = async (userId: string) => {
+const getMyDashboard = async (userId: string,role:string) => {
 
 
   const totalProducts =await Product.countDocuments();
@@ -38,14 +38,29 @@ const totalIncomes=await Sales.aggregate(   [
         count: { $sum: 1 }
       }
   }
-])
-  return {
-    totalProducts,
-    totalMonthSales,
-    totalSales,
+]);
+
+
+
+const sendData:Record<string, unknown> ={
+  totalProducts,
+  totalMonthSales,
+  totalSales,
+  
 
 totalIncomes
-  };
+}
+
+let totalSeller
+
+if(role==='manager'){
+  totalSeller= await User.countDocuments({role:'seller'});
+
+  sendData.totalSeller=totalSeller
+}
+
+
+  return sendData
 };
 
 
